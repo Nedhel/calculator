@@ -1,9 +1,59 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <style>
+            textarea{
+                resize: none;
+                
+            }
+            .keys{                
+                width: 40px;
+                height: 40px;                
+                border: 2px solid;
+                text-align: center;
+            }
+            td > button{
+                width: 100%;
+                height: 100%;
+            }
+        </style>
     </head>
     <body>
-        <p>Hola este es el primer repositorio</p>
+        <div>
+            <table>
+                <tr>
+                    <td colspan="4"><textarea name="screen" id="screenCal" cols="22" rows="3" readonly></textarea></td>
+                </tr>
+                <tr>
+                    <td class="keys"><button>CE</button></td>
+                    <td class="keys"><button>C</button></td>
+                    <td class="keys"><button>&#60</button></td>
+                    <td class="keys"><button>/</button></td>
+                </tr>
+                <tr>
+                    <td class="keys"><button>7</button></td>
+                    <td class="keys"><button>8</button></td>
+                    <td class="keys"><button>9</button></td>
+                    <td class="keys"><button>*</button></td>
+                </tr>
+                <tr>
+                    <td class="keys"><button>4</button></td>
+                    <td class="keys"><button>5</button></td>
+                    <td class="keys"><button>6</button></td>
+                    <td class="keys"><button>-</button></td>
+                </tr>
+                <tr>
+                    <td class="keys"><button>1</button></td>
+                    <td class="keys"><button>2</button></td>
+                    <td class="keys"><button>3</button></td>
+                    <td class="keys"><button>+</button></td>
+                </tr>
+                <tr>
+                    <td class="keys"><button>0</button></td>
+                    <td class="keys"><button>.</button></td>
+                    <td colspan="2" class="keys"><button>=</button></td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>
