@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(201, 148, 92, 0.763);
+    background-color: #FCF6F5FF;
 }
 .flex-container{
     width: 100%;
@@ -28,9 +28,10 @@ td > button{
     font-weight: bold;
     text-shadow: 2px 2px 5px white;
     font-size: 20px;
+    border-radius: 100%;
 }
 button:hover {
-    background-color: orange;
+    background-color: #990011FF;
     color: black;    
 }
 .operation{
@@ -38,5 +39,5 @@ button:hover {
 }
 h1,h4{
     text-align: center;
-    color: white;
+    color: #990011FF;
 }
