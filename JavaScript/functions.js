@@ -1,15 +1,29 @@
-function getText(idtext){
-    return document.getElementById('screenCal').value
+function getScreen(){
+    let textOnScreen = document.getElementById('screenOperation').innerHTML
+    if(textOnScreen.length + document.getElementById('screen').innerHTML.length< 18)
+        document.getElementById('screenOperation').innerHTML =
+        textOnScreen + document.getElementById('screen').innerHTML
+    clearScreen()
 }
 function setText(text){
-    document.getElementById('screenCal').value = text
+    let textOnScreen = document.getElementById('screen').innerHTML
+    if(textOnScreen.length < 18)
+        document.getElementById('screen').innerHTML = textOnScreen.concat(text)
 }
-function erasechar(){
-    
+function eraseChar(){
+    let text=document.getElementById('screen').innerHTML.split('')
+    text.pop()
+    document.getElementById('screen').innerHTML= text.join('')
+}
+function clear(){
+    document.getElementById('screen').innerHTML=''
+    document.getElementById('screenOperation').innerHTML=''
+}
+function clearScreen(){
+    document.getElementById('screen').innerHTML=''
 }
  
 window.addEventListener('load', function() {
-    console.log("entra al load")
     document.getElementById('btn0')
         .addEventListener('click', ()=>setText(0))
     document.getElementById('btn1')
@@ -31,12 +45,30 @@ window.addEventListener('load', function() {
     document.getElementById('btn9')
         .addEventListener('click', ()=>setText(9))
     document.getElementById('btnplus')
-        .addEventListener('click', ()=>setText('+'))
+        .addEventListener('click', ()=>{
+            setText('+')
+            getScreen()
+        })
     document.getElementById('btnminus')
-        .addEventListener('click', ()=>setText('-'))
+        .addEventListener('click', ()=>{
+            setText('-')
+            getScreen()
+        })
     document.getElementById('btntimes')
-        .addEventListener('click', ()=>setText('*'))
+        .addEventListener('click', ()=>{
+            setText('*')
+            getScreen()
+        })
     document.getElementById('btndivided')
-        .addEventListener('click', ()=>setText('/'))
+        .addEventListener('click', ()=>{
+            setText('/')
+            getScreen()
+        })
+    document.getElementById('btndot')
+        .addEventListener('click',()=>setText('.'))
+    document.getElementById('btneraseall')
+        .addEventListener('click', ()=>clear())
+    document.getElementById('btnerase')
+        .addEventListener('click', ()=>eraseChar())
 });
 

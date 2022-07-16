@@ -8,12 +8,19 @@ body{
     align-items: center;
     justify-content: center;
 }
-textarea{
-    resize: none;
-    opacity:20%;
+span{
+    /*resize: none;*/
+    display: block;
     background-color: white; 
     width: 98%;  
-    height: 80px;
+    height: 40px;
+    font-size: 32px;
+    color: #990011FF;
+    font-weight: bold;
+    text-align: right;
+}
+#screenOperation{
+    text-align: left;
 }
 .keys{
     width: 80px;
