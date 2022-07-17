@@ -39,7 +39,8 @@ td > button{
 }
 button:hover {
     background-color: #990011FF;
-    color: black;    
+    color: black; 
+    box-shadow: 0 0 20px rgba(35, 173, 278, 1);  
 }
 .operation{
     background-color: gray;
