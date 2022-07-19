@@ -1,74 +1,100 @@
-function getScreen(){
-    let textOnScreen = document.getElementById('screenOperation').innerHTML
-    if(textOnScreen.length + document.getElementById('screen').innerHTML.length< 18)
-        document.getElementById('screenOperation').innerHTML =
-        textOnScreen + document.getElementById('screen').innerHTML
-    clearScreen()
+function getScreen(id){
+    return document.getElementById(id).innerHTML
 }
-function setText(text){
-    let textOnScreen = document.getElementById('screen').innerHTML
-    if(textOnScreen.length < 18)
-        document.getElementById('screen').innerHTML = textOnScreen.concat(text)
+function setTextOnScreen(id,text){
+    document.getElementById(id).innerHTML= text
 }
-function eraseChar(){
-    let text=document.getElementById('screen').innerHTML.split('')
-    text.pop()
-    document.getElementById('screen').innerHTML= text.join('')
+function setCharOnScreen(id,text){
+    document.getElementById(id).innerHTML = getScreen(id) + text
 }
-function clear(){
-    document.getElementById('screen').innerHTML=''
-    document.getElementById('screenOperation').innerHTML=''
+function eraseChar(id){
+    let number = getScreen(id).split('')
+    number.pop()
+    setTextOnScreen(id,number.join(''))
 }
-function clearScreen(){
-    document.getElementById('screen').innerHTML=''
+function setDotOnScreen(id){
+    let number = getScreen(id)
+    if(/\D/.test(number)){        
+    }else{
+        setCharOnScreen(id,'.')
+    }
+}
+function clearAll(){
+    setTextOnScreen('screen','')
+    setTextOnScreen('screenOperation','')
+}
+function operation(text){
+    setCharOnScreen('screen',text)
+    setTextOnScreen('screenOperation',getScreen('screen'))
+    setTextOnScreen('screen','')
+}
+function equal(){
+    let sOperation = getScreen('screenOperation').split('')
+    let sign = sOperation[sOperation.length - 1]
+    sOperation.pop()
+    let num1= Number(sOperation.join(''))    
+    switch (sign){
+        case '+':
+            num1+=Number(getScreen('screen'))                
+            break;
+        case '-':
+            num1-=Number(getScreen('screen'))
+            break;
+        case '/':
+            num1/=Number(getScreen('screen'))
+            break;
+        case '*':
+            num1*=Number(getScreen('screen'))
+            break;
+    }
+    setTextOnScreen('screen',num1)
+    setTextOnScreen('screenOperation','')
 }
  
 window.addEventListener('load', function() {
     document.getElementById('btn0')
-        .addEventListener('click', ()=>setText(0))
+        .addEventListener('click', ()=>setCharOnScreen('screen',0))
     document.getElementById('btn1')
-        .addEventListener('click', ()=>setText(1))
+        .addEventListener('click', ()=>setCharOnScreen('screen',1))
     document.getElementById('btn2')
-        .addEventListener('click', ()=>setText(2))
+        .addEventListener('click', ()=>setCharOnScreen('screen',2))
     document.getElementById('btn3')
-        .addEventListener('click', ()=>setText(3))
+        .addEventListener('click', ()=>setCharOnScreen('screen',3))
     document.getElementById('btn4')
-        .addEventListener('click', ()=>setText(4))
+        .addEventListener('click', ()=>setCharOnScreen('screen',4))
     document.getElementById('btn5')
-        .addEventListener('click', ()=>setText(5))
+        .addEventListener('click', ()=>setCharOnScreen('screen',5))
     document.getElementById('btn6')
-        .addEventListener('click', ()=>setText(6))
+        .addEventListener('click', ()=>setCharOnScreen('screen',6))
     document.getElementById('btn7')
-        .addEventListener('click', ()=>setText(7))
+        .addEventListener('click', ()=>setCharOnScreen('screen',7))
     document.getElementById('btn8')
-        .addEventListener('click', ()=>setText(8))
+        .addEventListener('click', ()=>setCharOnScreen('screen',8))
     document.getElementById('btn9')
-        .addEventListener('click', ()=>setText(9))
+        .addEventListener('click', ()=>setCharOnScreen('screen',9))
     document.getElementById('btnplus')
         .addEventListener('click', ()=>{
-            setText('+')
-            getScreen()
+            operation('+')            
         })
     document.getElementById('btnminus')
         .addEventListener('click', ()=>{
-            setText('-')
-            getScreen()
+            operation('-')            
         })
     document.getElementById('btntimes')
         .addEventListener('click', ()=>{
-            setText('*')
-            getScreen()
+            operation('*')            
         })
     document.getElementById('btndivided')
         .addEventListener('click', ()=>{
-            setText('/')
-            getScreen()
+            operation('/')            
         })
     document.getElementById('btndot')
-        .addEventListener('click',()=>setText('.'))
+        .addEventListener('click',()=>setDotOnScreen('screen'))
     document.getElementById('btneraseall')
-        .addEventListener('click', ()=>clear())
+        .addEventListener('click', ()=>clearAll())
     document.getElementById('btnerase')
-        .addEventListener('click', ()=>eraseChar())
+        .addEventListener('click', ()=>eraseChar('screen'))
+    document.getElementById('btnequal')
+        .addEventListener('click', ()=>equal())
 });
 
