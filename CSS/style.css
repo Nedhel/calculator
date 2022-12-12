@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(15, 34, 39);
+    background-color: white
 }
 .flex-container{
     width: 100%;
@@ -54,6 +54,7 @@ h1,h4{
 }
 .table{
     border: 1px solid white;
-    box-shadow: 0 0 20px white;
+    box-shadow: 0 0 20px black;
     background-color: rgb(76, 131, 137);
+    padding: 3px;
 }
